@@ -4,8 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+iced = { git = "https://github.com/iced-rs/iced", rev = "8b45d620d048c33febbead4480d9ef62f196c9e1", features = ["debug", "highlighter", "tokio", "lazy"]}
 
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
 
 [[bin]]
 name = "iced_etudes"
 path = "src/iced_etudes_main.rs"
+
+# readelf -p .comment target/debug/program-name
