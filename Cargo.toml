@@ -1,0 +1,11 @@
+[package]
+name = "iced-etudes"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+
+[[bin]]
+name = "iced_etudes"
+path = "src/iced_etudes_main.rs"
