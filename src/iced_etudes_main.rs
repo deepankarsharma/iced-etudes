@@ -1,7 +1,12 @@
 use iced::advanced::layout::{self, Layout};
 use iced::advanced::renderer;
+use iced::advanced::widget::tree::{self, Tree};
 use iced::advanced::widget::{self, Widget};
+use iced::advanced::{self, Clipboard, Shell};
 use iced::event::{self, Event};
+use iced::keyboard;
+use iced::keyboard::key;
+use iced::mouse;
 use iced::widget::text_editor::{Action, Edit, Motion};
 use iced::widget::{button, center, checkbox, text, text_editor, text_input, Column};
 use iced::window;
@@ -175,6 +180,20 @@ where
             width: Length::Shrink,
             height: Length::Shrink,
         }
+    }
+
+    fn on_event(
+        &mut self,
+        tree: &mut Tree,
+        event: Event,
+        layout: Layout<'_>,
+        cursor: mouse::Cursor,
+        renderer: &Renderer,
+        clipboard: &mut dyn Clipboard,
+        shell: &mut Shell<'_, Message>,
+        _viewport: &Rectangle,
+    ) -> event::Status {
+        event::Status::Ignored
     }
 }
 
