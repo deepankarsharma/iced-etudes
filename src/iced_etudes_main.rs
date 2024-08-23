@@ -1,5 +1,5 @@
 use iced::event::{self, Event};
-use iced::widget::{button, center, checkbox, text, text_input, Column};
+use iced::widget::{button, center, checkbox, text, text_editor, text_input, Column};
 use iced::window;
 use iced::{Center, Element, Fill, Subscription, Task};
 
@@ -15,6 +15,7 @@ struct Events {
     last: Vec<Event>,
     enabled: bool,
     input_value: String,
+    text_editor_content: text_editor::Content,
 }
 
 #[derive(Debug, Clone)]
@@ -23,11 +24,16 @@ enum Message {
     Toggled(bool),
     Exit,
     InputChanged(String),
+    TextEditorAction(text_editor::Action),
 }
 
 impl Events {
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
+            Message::TextEditorAction(action) => {
+                self.text_editor_content.perform(action);
+                Task::none()
+            }
             Message::EventOccurred(event) if self.enabled => {
                 self.last.push(event);
 
@@ -76,15 +82,21 @@ impl Events {
             .padding(10)
             .on_press(Message::Exit);
 
-        let mut text_input = text_input("Type something to continue...", &self.input_value)
+        let text_input = text_input("Type something to continue...", &self.input_value)
             .on_input(Message::InputChanged)
             .padding(10)
             .width(600);
+
+        let text_editor = text_editor(&self.text_editor_content)
+            .height(Fill)
+            .on_action(Message::TextEditorAction);
+
         let content = Column::new()
             .align_x(Center)
             .spacing(20)
             .push(events)
             .push(toggle)
+            .push(text_editor)
             .push(text_input)
             .push(exit);
 
