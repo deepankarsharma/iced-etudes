@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-iced = { git = "https://github.com/iced-rs/iced", rev = "8b45d620d048c33febbead4480d9ef62f196c9e1", features = ["debug", "highlighter", "tokio", "lazy"]}
+iced = { git = "https://github.com/iced-rs/iced", rev = "8b45d620d048c33febbead4480d9ef62f196c9e1", features = ["debug", "highlighter", "tokio", "lazy", "advanced"]}
+memmap2 = "0.9.4"
 
 [profile.dev]
 opt-level = 1
