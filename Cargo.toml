@@ -8,7 +8,7 @@ memmap2 = "0.9.4"
 rand = "0.8.5"
 tracing = "0.1.40"
 tracing-subscriber = "0.3.18"
-iced = { git = "https://github.com/iced-rs/iced", rev = "8b45d620d048c33febbead4480d9ef62f196c9e1", features = ["debug", "highlighter", "tokio", "lazy", "advanced"]}
+iced = { git = "https://github.com/iced-rs/iced", rev = "8b45d620d048c33febbead4480d9ef62f196c9e1", features = ["debug", "highlighter", "tokio", "lazy", "advanced", "canvas"]}
 
 [profile.dev]
 opt-level = 1
