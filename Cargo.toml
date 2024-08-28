@@ -1,6 +1,7 @@
 [workspace]
 name = "iced-etudes"
 edition = "2021"
+resolver ="2"
 members = ["etudes/*"]
 
 [workspace.dependencies]
